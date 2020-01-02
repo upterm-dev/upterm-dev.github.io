@@ -1,7 +1,8 @@
-title: upterm.dev
+title: Upterm
 theme: jekyll-theme-tactile
 description: Secure Terminal Sharing
 github:
+    public: true
     is_project_page: true
     repository_url: https://github.com/jingweno/upterm
     repository_nwo: jingweno/upterm
