@@ -23,7 +23,7 @@ go get -u github.com/jingweno/upterm/cmd/upterm
 
 ## Quick Start
 
-```
+```bash
 # Host a terminal session by running $SHELL
 $ upterm host
 
