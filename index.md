@@ -25,6 +25,7 @@ go get -u github.com/jingweno/upterm/cmd/upterm
 
 ```bash
 # Host a terminal session by running $SHELL
+# The client's input/output is attached to the host's
 $ upterm host
 
 # Display the ssh connection string
@@ -55,7 +56,7 @@ $ ssh bo6nosstp9ll08doq0rg:MTAuMC4xNzAuMTY0OjIy@uptermd.upterm.dev
 
 # Host a session with a custom command.
 # The client's input/output is attached to the host's.
-upterm host -- docker run --rm -ti ubuntu bash
+$ upterm host -- docker run --rm -ti ubuntu bash
 
 # Host a session by running 'tmux new -t pair-programming'.
 # The host runs 'tmux attach -t pair-programming' after the client joins the session.
