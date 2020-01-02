@@ -1,4 +1,6 @@
-[Upterm](https://github.com/jingweno/upterm) is an open-source solution for sharing terminal sessions instantly with the public internet over secure tunnels.
+# upterm
+
+Upterm is an open-source solution for sharing terminal sessions instantly with the public internet over secure tunnels.
 
 ## What it's good for
 
@@ -14,6 +16,13 @@ Upterm starts an SSH server locally and sets up a Reverse SSH tunnel to the [Upt
 Clients connect to your terminal session over the public internet with `ssh`.
 
 ## Installation
+
+### Mac
+
+```
+brew tap jingweno/upterm
+brew install upterm
+```
 
 ### From source
 
@@ -37,7 +46,7 @@ Host:                   uptermd.upterm.dev:22
 SSH Session:            ssh bo6nosstp9ll08doq0rg:MTAuMC4xNzAuMTY0OjIy@uptermd.upterm.dev
 
 # Open a new terminal and connect to the session
-$ ssh bo7nosstp9ll08doq0rg:MTAuMC4xNzAuMTY0OjIy@uptermd.upterm.dev
+$ ssh bo6nosstp9ll08doq0rg:MTAuMC4xNzAuMTY0OjIy@uptermd.upterm.dev
 
 # Host a terminal session by running $SHELL
 # The client's input/output is attached to the host's.
