@@ -1,1 +1,10 @@
+title: upterm.dev
 theme: jekyll-theme-minimal
+description: Secure Terminal Sharing
+github:
+    is_project_page: true
+    repository_url: https://github.com/jingweno/upterm
+    repository_nwo: jingweno/upterm
+    is_user_page: false
+    owner_url: https://github.com/jingweno
+    owner_name: jingweno

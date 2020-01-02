@@ -1,37 +1,76 @@
-## Welcome to GitHub Pages
+# upterm
 
-You can use the [editor on GitHub](https://github.com/upterm-dev/upterm-dev.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+[Upterm](https://github.com/jingweno/upterm) is an open-source solution for sharing terminal sessions instantly with the public internet over secure tunnels.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## What it's good for
 
-### Markdown
+* Remote pair programming
+* Access remote computers behind NATs and firewalls
+* Remote debugging
+* \<insert your creative use cases\>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## How it works
 
-```markdown
-Syntax highlighted code block
+You run the `upterm` program and specify the command for your terminal session.
+Upterm starts an SSH server locally and sets up a Reverse SSH tunnel to the [Upterm server](https://github.com/jingweno/upterm/tree/master/cmd/uptermd) (a.k.a. `uptermd`).
+Clients connect to your terminal session over the public internet with `ssh`.
 
-# Header 1
-## Header 2
-### Header 3
+## Installation
 
-- Bulleted
-- List
+### From source
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+go get -u github.com/jingweno/upterm/cmd/upterm
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Quick Start
 
-### Jekyll Themes
+```
+# Host a terminal session by running $SHELL
+$ upterm host
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/upterm-dev/upterm-dev.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+# Display the ssh connection string
+$ upterm session current
+=== BO6NOSSTP9LL08DOQ0RG
+Command:                /bin/bash
+Force Command:          n/a
+Host:                   uptermd.upterm.dev:22
+SSH Session:            ssh bo6nosstp9ll08doq0rg:MTAuMC4xNzAuMTY0OjIy@uptermd.upterm.dev
 
-### Support or Contact
+# Open a new terminal and connect to the session
+$ ssh bo7nosstp9ll08doq0rg:MTAuMC4xNzAuMTY0OjIy@uptermd.upterm.dev
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+# Host a terminal session by running $SHELL
+# The client's input/output is attached to the host's.
+$ upterm host
+
+# Display the ssh connection string
+$ upterm session current
+=== BO6NOSSTP9LL08DOQ0RG
+Command:                /bin/bash
+Force Command:          n/a
+Host:                   uptermd.upterm.dev:22
+SSH Session:            ssh bo6nosstp9ll08doq0rg:MTAuMC4xNzAuMTY0OjIy@uptermd.upterm.dev
+
+# Open a new terminal and connect to the session
+$ ssh bo6nosstp9ll08doq0rg:MTAuMC4xNzAuMTY0OjIy@uptermd.upterm.dev
+
+# Host a session with a custom command.
+# The client's input/output is attached to the host's.
+upterm host -- docker run --rm -ti ubuntu bash
+
+# Host a session by running 'tmux new -t pair-programming'.
+# The host runs 'tmux attach -t pair-programming' after the client joins the session.
+# The client's input/output is attached to this command's.
+$ upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming`,
+```
+
+More advanced usage is [here](https://github.com/jingweno/upterm/docs/upterm.md).
+
+## Demo
+
+[![asciicast](https://asciinema.org/a/AnXTj0pOOtvSWALjUIQ63OKDm.svg)](https://asciinema.org/a/AnXTj0pOOtvSWALjUIQ63OKDm)
+
+## License
+
+[Apache 2.0](LICENSE)
